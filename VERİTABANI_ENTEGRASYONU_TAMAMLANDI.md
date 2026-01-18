@@ -1,26 +1,26 @@
-# ?? VERİTABANI ENTEGRASYONU BAŞARILI!
+#    VERÄ°TABANI ENTEGRASYONU BAÅARILI!
 
-## ? TAMAMLANAN TÜZM İŞLEMLER
+##   TAMAMLANAN TÃœZM Ä°ÅLEMLER
 
-### ?? Oluşturulan Dosyalar:
-1. ? **VeritabaniYoneticisi.cs** - Veritabanı yönetim sınıfı (aktif)
-2. ? **VeritabaniYoneticisi_COMPLETE.cs** - Tam SQLite versiyonu (referans)
-3. ? **Form1.cs** - Güncellenmiş ana form sınıfı
+###    OluÅŸturulan Dosyalar:
+1.   **VeritabaniYoneticisi.cs** - VeritabanÄ± yÃ¶netim sÄ±nÄ±fÄ± (aktif)
+2.   **VeritabaniYoneticisi_COMPLETE.cs** - Tam SQLite versiyonu (referans)
+3.   **Form1.cs** - GÃ¼ncellenmiÅŸ ana form sÄ±nÄ±fÄ±
 
-### ?? Form1.cs'te Yapılan Değişiklikler:
+###    Form1.cs'te YapÄ±lan DeÄŸiÅŸiklikler:
 
-**1. Veritabanı Değişkenleri Eklendi:**
+**1. VeritabanÄ± DeÄŸiÅŸkenleri Eklendi:**
 ```csharp
 private VeriTabaniYoneticisi veriTabani = null;
 private string mevcutOyuncuAdi = "Oyuncu";
 ```
 
-**2. Constructor'da Başlatma:**
+**2. Constructor'da BaÅŸlatma:**
 ```csharp
 veriTabani = new VeriTabaniYoneticisi();
 ```
 
-**3. Oyun Bitti Metodu Güncellendi:**
+**3. Oyun Bitti Metodu GÃ¼ncellendi:**
 ```csharp
 int basariliDalgalar = mevcutDalga - 1;
 veriTabani.OyunSonuKaydet(mevcutOyuncuAdi, basariliDalgalar, altin, 0);
@@ -28,12 +28,12 @@ GosterOyunBittiDialog(basariliDalgalar);
 ```
 
 **4. Yeni Metodlar Eklendi:**
-- `GosterOyunBittiDialog()` - Oyun sonu penceresini gösterir
-- `GosterEnYuksekSkorlar()` - Kaydedilmiş skorları listeler
+- `GosterOyunBittiDialog()` - Oyun sonu penceresini gÃ¶sterir
+- `GosterEnYuksekSkorlar()` - KaydedilmiÅŸ skorlarÄ± listeler
 
 ---
 
-## ?? VERİTABANI ÖZELLİKLERİ
+##    VERÄ°TABANI Ã–ZELLÄ°KLERÄ°
 
 ### OyunSkorlari Tablosu:
 ```sql
@@ -41,160 +41,160 @@ CREATE TABLE OyunSkorlari (
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
     OyuncuAdi TEXT NOT NULL,
     BasariliDalgalar INTEGER NOT NULL,
-    KazanılanAltin INTEGER NOT NULL,
-    KaleTCanı INTEGER NOT NULL,
+    KazanÄ±lanAltin INTEGER NOT NULL,
+    KaleTCanÄ± INTEGER NOT NULL,
     TarihSaat DATETIME DEFAULT CURRENT_TIMESTAMP
 )
 ```
 
-### Kayıt Edilen Bilgiler:
-- ?? **Oyuncu Adı:** Varsayılan "Oyuncu"
-- ?? **Başarılı Dalgalar:** Tamamlanan dalga sayısı
-- ?? **Kazanılan Altın:** Toplam altın miktarı
-- ?? **Kale Canı:** Oyun sonundaki kalan can
-- ?? **Tarih/Saat:** Oynanış zamanı (otomatik)
+### KayÄ±t Edilen Bilgiler:
+-    **Oyuncu AdÄ±:** VarsayÄ±lan "Oyuncu"
+-    **BaÅŸarÄ±lÄ± Dalgalar:** Tamamlanan dalga sayÄ±sÄ±
+-    **KazanÄ±lan AltÄ±n:** Toplam altÄ±n miktarÄ±
+-    **Kale CanÄ±:** Oyun sonundaki kalan can
+-    **Tarih/Saat:** OynanÄ±ÅŸ zamanÄ± (otomatik)
 
 ---
 
-## ?? BAŞLAMA KILAVUZU
+##    BAÅLAMA KILAVUZU
 
-### Adım 1: NuGet Paketini Kurun
+### AdÄ±m 1: NuGet Paketini Kurun
 
 **Visual Studio'da:**
-1. **Araçlar ? NuGet Paket Yöneticisi ? Paket Yöneticisi Konsolu**
-2. Kopyala ve Yapıştır:
+1. **AraÃ§lar   NuGet Paket YÃ¶neticisi   Paket YÃ¶neticisi Konsolu**
+2. Kopyala ve YapÄ±ÅŸtÄ±r:
 ```
 Install-Package System.Data.SQLite
 ```
 
-### Adım 2: Using Statement Ekleyin
+### AdÄ±m 2: Using Statement Ekleyin
 
-**Form1.cs** dosyasının 6. satırına ekleyin:
+**Form1.cs** dosyasÄ±nÄ±n 6. satÄ±rÄ±na ekleyin:
 ```csharp
 using System.Data.SQLite;
 ```
 
-### Adım 3: Build All Yapın
+### AdÄ±m 3: Build All YapÄ±n
 
-Visual Studio'da: `Ctrl + Shift + B` veya **Build ? Build Solution**
+Visual Studio'da: `Ctrl + Shift + B` veya **Build   Build Solution**
 
-### Adım 4: Oyunu Çalıştırın
+### AdÄ±m 4: Oyunu Ã‡alÄ±ÅŸtÄ±rÄ±n
 
-Şimdi oyunu başlatabilirsiniz! ??
-
----
-
-## ?? OYUN AKIŞI
-
-```
-1. Oyunu Başlat
-   ?
-2. "OYUNA BAŞLA" butonuna tıkla
-   ?
-3. Oyun Oyna (Dalgalar Geç)
-   ?
-4. Kale Yıkıl (Can = 0)
-   ?
-5. Skor Otomatik Kaydedilir ?
-   ?
-6. Dialog: "En Yüksek Skorları görmek ister misiniz?"
-   ?
-7. EVET ? Skorlar Gösterilir
-   HAYIR ? Ana Menüye Dön
-```
+Åimdi oyunu baÅŸlatabilirsiniz!   
 
 ---
 
-## ?? EN YÜKSEK SKORLAR GÖRÜNTÜSÜ
+##    OYUN AKIÅI
 
-Örnek çıktı:
 ```
-=== EN YÜKSEK SKORLAR ===
+1. Oyunu BaÅŸlat
+    
+2. "OYUNA BAÅLA" butonuna tÄ±kla
+    
+3. Oyun Oyna (Dalgalar GeÃ§)
+    
+4. Kale YÄ±kÄ±l (Can = 0)
+    
+5. Skor Otomatik Kaydedilir  
+    
+6. Dialog: "En YÃ¼ksek SkorlarÄ± gÃ¶rmek ister misiniz "
+    
+7. EVET   Skorlar GÃ¶sterilir
+   HAYIR   Ana MenÃ¼ye DÃ¶n
+```
+
+---
+
+##    EN YÃœKSEK SKORLAR GÃ–RÃœNTÃœSÃœ
+
+Ã–rnek Ã§Ä±ktÄ±:
+```
+=== EN YÃœKSEK SKORLAR ===
 
 1. Oyuncu
-   Dalga: 15 | Altın: 5250
-   Kale Canı: 0/20 | 25.12.2024 14:30
+   Dalga: 15 | AltÄ±n: 5250
+   Kale CanÄ±: 0/20 | 25.12.2024 14:30
 
 2. Oyuncu
-   Dalga: 12 | Altın: 4100
-   Kale Canı: 0/20 | 25.12.2024 13:45
+   Dalga: 12 | AltÄ±n: 4100
+   Kale CanÄ±: 0/20 | 25.12.2024 13:45
 
 ...
 ```
 
 ---
 
-## ?? GÜVENLİK
+##    GÃœVENLÄ°K
 
-? **SQL Injection Koruması:** Parametreli sorgular
+  **SQL Injection KorumasÄ±:** Parametreli sorgular
 ```csharp
 komut.Parameters.AddWithValue("@oyuncu", oyuncuAdi);
 ```
 
-? **Hata Yönetimi:** Try-catch blokları
+  **Hata YÃ¶netimi:** Try-catch bloklarÄ±
 ```csharp
 try { ... }
 catch (Exception ex) { ... }
 ```
 
-? **Null Güvenliği:** Boş değer kontrolleri
+  **Null GÃ¼venliÄŸi:** BoÅŸ deÄŸer kontrolleri
 ```csharp
-oyuncuAdi ?? "Oyuncu"
+oyuncuAdi    "Oyuncu"
 ```
 
 ---
 
-## ?? VERİTABANI DOSYASI
+##    VERÄ°TABANI DOSYASI
 
-- **Dosya Adı:** `TowerDefense.db`
+- **Dosya AdÄ±:** `TowerDefense.db`
 - **Format:** SQLite3
-- **Lokasyon:** Proje çalışma dizini
-- **Oluşturuluş:** Otomatik (ilk çalıştırmada)
+- **Lokasyon:** Proje Ã§alÄ±ÅŸma dizini
+- **OluÅŸturuluÅŸ:** Otomatik (ilk Ã§alÄ±ÅŸtÄ±rmada)
 
 ---
 
-## ?? SİSTEM GEREKSİNİMLERİ
+##    SÄ°STEM GEREKSÄ°NÄ°MLERÄ°
 
-- ? .NET Framework 4.8 veya üzeri
-- ? System.Data.SQLite NuGet paketi
-- ? Windows Forms (zaten var)
-
----
-
-## ?? ÖZELLİKLER
-
-? Oyun sonunu otomatik kaydet  
-? En iyi 10 skoru sıralı göster  
-? Tarih/saat bilgisi sakla  
-? SQL Injection koruması  
-? Hata yönetimi  
-? Null güvenliği  
+-   .NET Framework 4.8 veya Ã¼zeri
+-   System.Data.SQLite NuGet paketi
+-   Windows Forms (zaten var)
 
 ---
 
-## ?? SORUN GIDERME
+##    Ã–ZELLÄ°KLER
 
-**1. Paket Yükleme Hatası:**
-- PowerShell'i **Yönetici** olarak çalıştırın
-- Paket kaynağını kontrol edin
-
-**2. Derleme Hatası (CS0234):**
-- Visual Studio'yu kapatın
-- `bin` ve `obj` klasörlerini silin
-- Projeyi yeniden açın
-
-**3. Veritabanı Hatası:**
-- `TowerDefense.db` dosyasını silin
-- Oyunu yeniden çalıştırın (otomatik oluşturulacak)
+  Oyun sonunu otomatik kaydet  
+  En iyi 10 skoru sÄ±ralÄ± gÃ¶ster  
+  Tarih/saat bilgisi sakla  
+  SQL Injection korumasÄ±  
+  Hata yÃ¶netimi  
+  Null gÃ¼venliÄŸi  
 
 ---
 
-## ?? HAZIR!
+##    SORUN GIDERME
 
-Proje tamamen entegre edilmiştir. NuGet paketini kurarak hemen başlayabilirsiniz!
+**1. Paket YÃ¼kleme HatasÄ±:**
+- PowerShell'i **YÃ¶netici** olarak Ã§alÄ±ÅŸtÄ±rÄ±n
+- Paket kaynaÄŸÄ±nÄ± kontrol edin
+
+**2. Derleme HatasÄ± (CS0234):**
+- Visual Studio'yu kapatÄ±n
+- `bin` ve `obj` klasÃ¶rlerini silin
+- Projeyi yeniden aÃ§Ä±n
+
+**3. VeritabanÄ± HatasÄ±:**
+- `TowerDefense.db` dosyasÄ±nÄ± silin
+- Oyunu yeniden Ã§alÄ±ÅŸtÄ±rÄ±n (otomatik oluÅŸturulacak)
+
+---
+
+##    HAZIR!
+
+Proje tamamen entegre edilmiÅŸtir. NuGet paketini kurarak hemen baÅŸlayabilirsiniz!
 
 ```
 Install-Package System.Data.SQLite
 ```
 
-**İyi oyunlar! ??**
+**Ä°yi oyunlar!   **
