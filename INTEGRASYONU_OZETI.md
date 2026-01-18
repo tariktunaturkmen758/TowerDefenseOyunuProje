@@ -1,14 +1,14 @@
-# ?? TOWER DEFENSE - VERİTABANI ENTEGRASYONU ÖZETI
+#      TOWER DEFENSE - VERÄ°TABANI ENTEGRASYONU Ã–ZETI
 
-## ? TAMAMLANAN İŞLER
+##    TAMAMLANAN Ä°ÅLER
 
-### 1. Veritabanı Yöneticisi Sınıfı
+### 1. VeritabanÄ± YÃ¶neticisi SÄ±nÄ±fÄ±
 **Dosya:** `VeritabaniYoneticisi.cs`
 
 Yetkileri:
-- ? SQLite veritabanı oluşturma ve başlatma
-- ? Oyun sonu verilerini kaydetme
-- ? En yüksek 10 skoru getirme
+-    SQLite veritabanÄ± oluÅŸturma ve baÅŸlatma
+-    Oyun sonu verilerini kaydetme
+-    En yÃ¼ksek 10 skoru getirme
 
 ```csharp
 public class VeriTabaniYoneticisi
@@ -18,9 +18,9 @@ public class VeriTabaniYoneticisi
 }
 ```
 
-### 2. Form1.cs Güncellemeleri
+### 2. Form1.cs GÃ¼ncellemeleri
 
-**Eklenen Değişkenler:**
+**Eklenen DeÄŸiÅŸkenler:**
 ```csharp
 private VeriTabaniYoneticisi veriTabani = null;
 private string mevcutOyuncuAdi = "Oyuncu";
@@ -32,28 +32,28 @@ private void GosterOyunBittiDialog(int basariliDalgalar)
 private void GosterEnYuksekSkorlar()
 ```
 
-**Güncellenen Metodlar:**
-- `Form1()` - Constructor'da veritabanı başlatılıyor
-- `DusmanTayicisi_Tick()` - Oyun bitti kısmında veritabanına kayıt yapılıyor
+**GÃ¼ncellenen Metodlar:**
+- `Form1()` - Constructor'da veritabanÄ± baÅŸlatÄ±lÄ±yor
+- `DusmanTayicisi_Tick()` - Oyun bitti kÄ±smÄ±nda veritabanÄ±na kayÄ±t yapÄ±lÄ±yor
 
 ### 3. Veri Modeli
 
 ```csharp
 public class OyunSkoru
 {
-    public string OyuncuAdi { get; set; }              // Oyuncu adı
-    public int BasariliDalgalar { get; set; }        // Tamamlanan dalga sayısı
-    public int KazanılanAltin { get; set; }          // Kazanılan altın
-    public int KaleTCanı { get; set; }               // Kalan kale canı
-    public DateTime TarihSaat { get; set; }          // Oynanış tarihi/saati
+    public string OyuncuAdi { get; set; }              // Oyuncu adÄ±
+    public int BasariliDalgalar { get; set; }        // Tamamlanan dalga sayÄ±sÄ±
+    public int KazanÄ±lanAltin { get; set; }          // KazanÄ±lan altÄ±n
+    public int KaleTCanÄ± { get; set; }               // Kalan kale canÄ±
+    public DateTime TarihSaat { get; set; }          // OynanÄ±ÅŸ tarihi/saati
 }
 ```
 
 ---
 
-## ?? GEREKLİ PAKET
+##      GEREKLÄ° PAKET
 
-**System.Data.SQLite** (henüz yüklenmedi)
+**System.Data.SQLite** (henÃ¼z yÃ¼klenmedi)
 
 Kurulum komutu:
 ```
@@ -62,101 +62,101 @@ Install-Package System.Data.SQLite
 
 ---
 
-## ?? KULLANICI AKIŞI
+##      KULLANICI AKIÅI
 
 ```
-Oyunu Başlat
-    ?
-Oyun Oyna (Dalgalar geç)
-    ?
-Kale Yıkılsın (Ana Can ? 0)
-    ?
-Skor Veritabanına Kaydedilsin ?
-    ?
-Dialog: "En Yüksek Skorları görmek ister misiniz?"
-    ?
-    ? Evet: En iyi 10 skoru göster
-    ? Hayır: Direkt ana menüye dön
+Oyunu BaÅŸlat
+      
+Oyun Oyna (Dalgalar geÃ§)
+      
+Kale YÄ±kÄ±lsÄ±n (Ana Can    0)
+      
+Skor VeritabanÄ±na Kaydedilsin   
+      
+Dialog: "En YÃ¼ksek SkorlarÄ± gÃ¶rmek ister misiniz  "
+      
+       Evet: En iyi 10 skoru gÃ¶ster
+       HayÄ±r: Direkt ana menÃ¼ye dÃ¶n
 ```
 
 ---
 
-## ?? VERİTABANI ŞEMASI
+##      VERÄ°TABANI ÅEMASI
 
 ```sql
 CREATE TABLE OyunSkorlari (
     ID INTEGER PRIMARY KEY AUTOINCREMENT,              -- Benzersiz ID
-    OyuncuAdi TEXT NOT NULL,                          -- Oyuncu adı (varsayılan: "Oyuncu")
-    BasariliDalgalar INTEGER NOT NULL,                -- Tamamlanan dalga sayısı
-    KazanılanAltin INTEGER NOT NULL,                  -- Toplam kazanılan altın
-    KaleTCanı INTEGER NOT NULL,                       -- Oyun bittiğinde kalan can
-    TarihSaat DATETIME DEFAULT CURRENT_TIMESTAMP      -- Kayıt tarihi/saati
+    OyuncuAdi TEXT NOT NULL,                          -- Oyuncu adÄ± (varsayÄ±lan: "Oyuncu")
+    BasariliDalgalar INTEGER NOT NULL,                -- Tamamlanan dalga sayÄ±sÄ±
+    KazanÄ±lanAltin INTEGER NOT NULL,                  -- Toplam kazanÄ±lan altÄ±n
+    KaleTCanÄ± INTEGER NOT NULL,                       -- Oyun bittiÄŸinde kalan can
+    TarihSaat DATETIME DEFAULT CURRENT_TIMESTAMP      -- KayÄ±t tarihi/saati
 )
 ```
 
-**Dosya Adı:** `TowerDefense.db`  
-**Lokasyon:** Proje çalışma dizini
+**Dosya AdÄ±:** `TowerDefense.db`  
+**Lokasyon:** Proje Ã§alÄ±ÅŸma dizini
 
 ---
 
-## ?? BAŞLAMA ADIMLARI
+##      BAÅLAMA ADIMLARI
 
 ### 1. NuGet Paketini Kurun
 ```
-Araçlar ? NuGet Paket Yöneticisi ? Paket Yöneticisi Konsolu
+AraÃ§lar    NuGet Paket YÃ¶neticisi    Paket YÃ¶neticisi Konsolu
 
 Install-Package System.Data.SQLite
 ```
 
 ### 2. Using Statement Ekleyin
-Dosya: `Form1.cs` (satır 6)
+Dosya: `Form1.cs` (satÄ±r 6)
 ```csharp
 using System.Data.SQLite;
 ```
 
-### 3. VeritabaniYoneticisi.cs'i Güncelleyin
-- `VeritabaniYoneticisi_COMPLETE.cs` dosyasındaki kodu kopyalayıp
-- `VeritabaniYoneticisi.cs` dosyasının içine yapıştırın
+### 3. VeritabaniYoneticisi.cs'i GÃ¼ncelleyin
+- `VeritabaniYoneticisi_COMPLETE.cs` dosyasÄ±ndaki kodu kopyalayÄ±p
+- `VeritabaniYoneticisi.cs` dosyasÄ±nÄ±n iÃ§ine yapÄ±ÅŸtÄ±rÄ±n
 
 ### 4. Yeniden Derleyin
-Visual Studio'da: `Build ? Build Solution` (Ctrl + Shift + B)
+Visual Studio'da: `Build    Build Solution` (Ctrl + Shift + B)
 
 ---
 
-## ?? GÜVENLİK ÖZELLİKLERİ
+##      GÃœVENLÄ°K Ã–ZELLÄ°KLERÄ°
 
-? **SQL Injection Koruması:** Parametreli sorgular kullanılıyor
+   **SQL Injection KorumasÄ±:** Parametreli sorgular kullanÄ±lÄ±yor
 ```csharp
 komut.Parameters.AddWithValue("@oyuncu", oyuncuAdi);
 ```
 
-? **Hata Yönetimi:** Try-catch blokları ile tüm veritabanı işlemleri korunuyor
+   **Hata YÃ¶netimi:** Try-catch bloklarÄ± ile tÃ¼m veritabanÄ± iÅŸlemleri korunuyor
 
-? **Null Güvenliği:** Boş oyuncu adı "Oyuncu" olarak set ediliyor
+   **Null GÃ¼venliÄŸi:** BoÅŸ oyuncu adÄ± "Oyuncu" olarak set ediliyor
 ```csharp
-oyuncuAdi ?? "Oyuncu"
+oyuncuAdi      "Oyuncu"
 ```
 
 ---
 
-## ?? GELECEK GELİŞTİRMELER (İsteğe Bağlı)
+##      GELECEK GELÄ°ÅTÄ°RMELER (Ä°steÄŸe BaÄŸlÄ±)
 
 - [ ] Oyuncu profili sistemi
-- [ ] Oyuncu istatistikleri (ortalama skor, toplam oyun sayısı)
+- [ ] Oyuncu istatistikleri (ortalama skor, toplam oyun sayÄ±sÄ±)
 - [ ] Skor arama/filtreleme
-- [ ] Skor silme işlevi (admin)
-- [ ] Leaderboard arayüzü
-- [ ] İstatistik grafikler
+- [ ] Skor silme iÅŸlevi (admin)
+- [ ] Leaderboard arayÃ¼zÃ¼
+- [ ] Ä°statistik grafikler
 
 ---
 
-## ? DURUM
+##    DURUM
 
-? **Kod Yazıldı**
-? **Form1.cs Entegrasyonu Yapıldı**
-? **Derleme Başarılı**
-? **NuGet Paketi Kurulması Gerekli** (Kullanıcı tarafından)
+   **Kod YazÄ±ldÄ±**
+   **Form1.cs Entegrasyonu YapÄ±ldÄ±**
+   **Derleme BaÅŸarÄ±lÄ±**
+   **NuGet Paketi KurulmasÄ± Gerekli** (KullanÄ±cÄ± tarafÄ±ndan)
 
 ---
 
-**Proje hazır! NuGet paketini kurarak oyunu çalıştırabilirsiniz. ??**
+**Proje hazÄ±r! NuGet paketini kurarak oyunu Ã§alÄ±ÅŸtÄ±rabilirsiniz.     **
