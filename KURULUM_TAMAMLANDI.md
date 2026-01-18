@@ -1,117 +1,117 @@
-# ? VERİTABANI ENTEGRASYONU TAMAMLANDI
+#  VERÄ°TABANI ENTEGRASYONU TAMAMLANDI
 
-## Yapılan Değişiklikler:
+## YapÄ±lan DeÄŸiÅŸiklikler:
 
-### 1?? Oluşturulan Dosyalar:
-- ? `VeritabaniYoneticisi.cs` - Veritabanı yönetimi sınıfı
-- ? `VeritabaniYoneticisi_COMPLETE.cs` - SQLite paketi yüklendikten sonra kullanılacak tam versiyon
+### 1 OluÅŸturulan Dosyalar:
+-  `VeritabaniYoneticisi.cs` - VeritabanÄ± yÃ¶netimi sÄ±nÄ±fÄ±
+-  `VeritabaniYoneticisi_COMPLETE.cs` - SQLite paketi yÃ¼klendikten sonra kullanÄ±lacak tam versiyon
 
-### 2?? Form1.cs'te Yapılan Değişiklikler:
-- ? Veritabanı değişkenleri eklendi (`veriTabani`, `mevcutOyuncuAdi`)
-- ? Constructor'da veritabanı başlatıldı
-- ? Oyun bitti metodu güncellendi - veritabanına kayıt yapılıyor
-- ? Yeni metodlar eklendi:
-  - `GosterOyunBittiDialog()` - Oyun sonu penceresini gösterir
-  - `GosterEnYuksekSkorlar()` - En yüksek 10 skoru listeler
+### 2 Form1.cs'te YapÄ±lan DeÄŸiÅŸiklikler:
+-  VeritabanÄ± deÄŸiÅŸkenleri eklendi (`veriTabani`, `mevcutOyuncuAdi`)
+-  Constructor'da veritabanÄ± baÅŸlatÄ±ldÄ±
+-  Oyun bitti metodu gÃ¼ncellendi - veritabanÄ±na kayÄ±t yapÄ±lÄ±yor
+-  Yeni metodlar eklendi:
+  - `GosterOyunBittiDialog()` - Oyun sonu penceresini gÃ¶sterir
+  - `GosterEnYuksekSkorlar()` - En yÃ¼ksek 10 skoru listeler
 
-### 3?? OyunSkoru Sınıfı:
+### 3 OyunSkoru SÄ±nÄ±fÄ±:
 ```csharp
 public class OyunSkoru
 {
     public string OyuncuAdi { get; set; }
     public int BasariliDalgalar { get; set; }
-    public int KazanılanAltin { get; set; }
-    public int KaleTCanı { get; set; }
+    public int KazanÄ±lanAltin { get; set; }
+    public int KaleTCanÄ± { get; set; }
     public DateTime TarihSaat { get; set; }
 }
 ```
 
 ---
 
-## ?? NÜ GET PAKETINI KURMA (ÖNEMLİ!):
+ NÃœ GET PAKETINI KURMA (Ã–NEMLÄ°!):
 
-Projeyi çalıştırabilmek için **System.Data.SQLite** paketini kurmalısınız.
+Projeyi Ã§alÄ±ÅŸtÄ±rabilmek iÃ§in **System.Data.SQLite** paketini kurmalÄ±sÄ±nÄ±z.
 
 ### Visual Studio'da:
-1. **Araçlar ? NuGet Paket Yöneticisi ? Paket Yöneticisi Konsolu**
-2. Şu komutu yazın:
+1. **AraÃ§lar   NuGet Paket YÃ¶neticisi   Paket YÃ¶neticisi Konsolu**
+2. Åu komutu yazÄ±n:
 ```
 Install-Package System.Data.SQLite
 ```
 
-### Veya Package.config aracılığıyla:
+### Veya Package.config aracÄ±lÄ±ÄŸÄ±yla:
 ```xml
 <package id="System.Data.SQLite" version="1.0.118.0" targetFramework="net48" />
 ```
 
 ---
 
-## ?? Paketi Kurulduktan Sonra:
+##    Paketi Kurulduktan Sonra:
 
-1. `Form1.cs` en üstüne şu satırı ekleyin:
+1. `Form1.cs` en Ã¼stÃ¼ne ÅŸu satÄ±rÄ± ekleyin:
 ```csharp
 using System.Data.SQLite;
 ```
 
-2. `VeritabaniYoneticisi.cs` dosyasını `VeritabaniYoneticisi_COMPLETE.cs` ile değiştirin
+2. `VeritabaniYoneticisi.cs` dosyasÄ±nÄ± `VeritabaniYoneticisi_COMPLETE.cs` ile deÄŸiÅŸtirin
 
 3. Projeyi yeniden derleyin (Build All)
 
 ---
 
-## ?? Oyun Kullanımı:
+##    Oyun KullanÄ±mÄ±:
 
-1. Oyunu başlatın
-2. Oyun oynayın ve kale yıkılana kadar devam edin
-3. Kale yıkıldığında:
-   - Skor otomatik olarak veritabanına kaydedilir
-   - "En Yüksek Skorları görmek ister misiniz?" sorusu sorulur
-   - **Evet** seçeneğini tıklayın
-   - Kaydedilmiş tüm skorları görün
+1. Oyunu baÅŸlatÄ±n
+2. Oyun oynayÄ±n ve kale yÄ±kÄ±lana kadar devam edin
+3. Kale yÄ±kÄ±ldÄ±ÄŸÄ±nda:
+   - Skor otomatik olarak veritabanÄ±na kaydedilir
+   - "En YÃ¼ksek SkorlarÄ± gÃ¶rmek ister misiniz " sorusu sorulur
+   - **Evet** seÃ§eneÄŸini tÄ±klayÄ±n
+   - KaydedilmiÅŸ tÃ¼m skorlarÄ± gÃ¶rÃ¼n
 
 ---
 
-## ?? Veritabanı Tablosu:
+##    VeritabanÄ± Tablosu:
 
 ```sql
 CREATE TABLE OyunSkorlari (
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
     OyuncuAdi TEXT NOT NULL,
     BasariliDalgalar INTEGER NOT NULL,
-    KazanılanAltin INTEGER NOT NULL,
-    KaleTCanı INTEGER NOT NULL,
+    KazanÄ±lanAltin INTEGER NOT NULL,
+    KaleTCanÄ± INTEGER NOT NULL,
     TarihSaat DATETIME DEFAULT CURRENT_TIMESTAMP
 )
 ```
 
-**Dosya:** `TowerDefense.db` (otomatik oluşturulur)
+**Dosya:** `TowerDefense.db` (otomatik oluÅŸturulur)
 
 ---
 
-## ? Özellikler:
+##   Ã–zellikler:
 
-? Oyun sonunda skorları otomatik kaydet
-? En yüksek 10 skoru sıralı olarak göster
-? Oyuncu adı, dalga, altın ve tarih/saat bilgisini sakla
-? SQL Injection koruması (parametreli sorgular)
-? Hata yönetimi ile güvenli veritabanı işlemleri
+  Oyun sonunda skorlarÄ± otomatik kaydet
+  En yÃ¼ksek 10 skoru sÄ±ralÄ± olarak gÃ¶ster
+  Oyuncu adÄ±, dalga, altÄ±n ve tarih/saat bilgisini sakla
+  SQL Injection korumasÄ± (parametreli sorgular)
+  Hata yÃ¶netimi ile gÃ¼venli veritabanÄ± iÅŸlemleri
 
 ---
 
-## ?? Sorun Giderme:
+##    Sorun Giderme:
 
-**Eğer derleme hatası alırsanız:**
-1. Visual Studio'yu kapatın
-2. Proje klasörüne git:
-   - `bin` klasörünü sil
-   - `obj` klasörünü sil
-3. Visual Studio'yu yeniden aç
+**EÄŸer derleme hatasÄ± alÄ±rsanÄ±z:**
+1. Visual Studio'yu kapatÄ±n
+2. Proje klasÃ¶rÃ¼ne git:
+   - `bin` klasÃ¶rÃ¼nÃ¼ sil
+   - `obj` klasÃ¶rÃ¼nÃ¼ sil
+3. Visual Studio'yu yeniden aÃ§
 4. Build All yap
 
-**Paket kurma hatası:**
-- PowerShell'i Yönetici olarak çalıştırın
-- Paket kaynağını kontrol edin: https://www.nuget.org
+**Paket kurma hatasÄ±:**
+- PowerShell'i YÃ¶netici olarak Ã§alÄ±ÅŸtÄ±rÄ±n
+- Paket kaynaÄŸÄ±nÄ± kontrol edin: https://www.nuget.org
 
 ---
 
-**Hazırsınız! Şimdi NuGet paketini kurarak başlayabilirsiniz. ??**
+**HazÄ±rsÄ±nÄ±z! Åimdi NuGet paketini kurarak baÅŸlayabilirsiniz.   **
